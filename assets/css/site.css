@@ -1,0 +1,92 @@
+/* Horváth-Soós Andrea – shared styles.
+   Layout and colours live inline in each page (exported from the design canvas);
+   this file holds the shared background art, typography helpers and responsive behaviour. */
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #FAF8F5; overflow-x: hidden; }
+img { max-width: 100%; }
+
+a { color: #1D2B2A; }
+a:hover { opacity: 0.86; }
+button { -webkit-tap-highlight-color: transparent; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #CDAE7E;
+  outline-offset: 2px;
+}
+
+[id] { scroll-margin-top: 24px; }
+
+.serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Background art (data-graphic motif) */
+.art-hero { background-image: url(../img/motivum-hero.jpg); background-size: cover; background-position: right center; background-repeat: no-repeat; }
+.art-band { background-image: url(../img/motivum-band.jpg); background-size: cover; background-position: right center; background-repeat: no-repeat; }
+.art-cta  { background-image: url(../img/motivum-cta.jpg);  background-size: cover; background-position: center;       background-repeat: no-repeat; }
+.art-fin  { background-image: url(../img/motivum-kek.jpg);  background-size: cover; background-position: right center; background-repeat: no-repeat; }
+.art-flow { background-image: url(../img/motivum-flow.png); background-size: cover; background-position: center;       background-repeat: no-repeat; }
+.art-kap  {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 420px, #FAF8F5 420px),
+    url(../img/motivum-band.jpg) right top / auto 420px no-repeat,
+    #3A0E19;
+}
+
+/* Radio pills (Pénzügyi rendszer form) */
+.radio-pill { border: 1.5px solid #DCDAD6; cursor: pointer; }
+.radio-pill:has(input:checked) { border-color: #2455C7; }
+
+.is-hidden { display: none !important; }
+
+/* Mobile navigation */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; flex: 0 0 auto; }
+  .site-header > div > a:first-child { flex: 1 1 0; min-width: 0; }
+  .site-nav,
+  .site-actions { display: none !important; }
+  .site-header.is-open .site-nav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+    width: 100%;
+  }
+  .site-header.is-open .site-actions {
+    display: flex !important;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  /* keep floating photo badges inside the viewport */
+  [style*="left: -16px"] { left: 12px !important; }
+  [style*="right: -12px"] { right: 12px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
